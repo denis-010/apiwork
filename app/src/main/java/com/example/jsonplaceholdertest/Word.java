@@ -16,15 +16,104 @@ public class Word {
             this.hasMembers = hasMembers;
             this.examples = examples;
         }
+        @SerializedName("definition")
+        @Expose
         String definition;
+        @SerializedName("partOfSpeech")
+        @Expose
         String partOfSpeech;
+        @SerializedName("synonyms")
+        @Expose
         String[] synonyms;
+        @SerializedName("similarTo")
+        @Expose
         String[] similarTo;
+        @SerializedName("derivation")
+        @Expose
         String[] derivation;
+        @SerializedName("typeOf")
+        @Expose
         String[] typeOf;
+        @SerializedName("hasTypes")
+        @Expose
         String[] hasTypes;
+        @SerializedName("hasMembers")
+        @Expose
         String[] hasMembers;
+        @SerializedName("examples")
+        @Expose
         String[] examples;
+        public String getDefinition() {
+            return definition;
+        }
+
+        public void setDefinition(String definition) {
+            this.definition = definition;
+        }
+
+        public String getPartOfSpeech() {
+            return partOfSpeech;
+        }
+
+        public void setPartOfSpeech(String partOfSpeech) {
+            this.partOfSpeech = partOfSpeech;
+        }
+
+        public String[] getSynonyms() {
+            return synonyms;
+        }
+
+        public void setSynonyms(String[] synonyms) {
+            this.synonyms = synonyms;
+        }
+
+        public String[] getSimilarTo() {
+            return similarTo;
+        }
+
+        public void setSimilarTo(String[] similarTo) {
+            this.similarTo = similarTo;
+        }
+
+        public String[] getDerivation() {
+            return derivation;
+        }
+
+        public void setDerivation(String[] derivation) {
+            this.derivation = derivation;
+        }
+
+        public String[] getTypeOf() {
+            return typeOf;
+        }
+
+        public void setTypeOf(String[] typeOf) {
+            this.typeOf = typeOf;
+        }
+
+        public String[] getHasTypes() {
+            return hasTypes;
+        }
+
+        public void setHasTypes(String[] hasTypes) {
+            this.hasTypes = hasTypes;
+        }
+
+        public String[] getHasMembers() {
+            return hasMembers;
+        }
+
+        public void setHasMembers(String[] hasMembers) {
+            this.hasMembers = hasMembers;
+        }
+
+        public String[] getExamples() {
+            return examples;
+        }
+
+        public void setExamples(String[] examples) {
+            this.examples = examples;
+        }
     }
     @SerializedName("word")
     @Expose
@@ -45,7 +134,7 @@ public class Word {
     @Expose
     private float frequency;
 
-    public String getWord() {
+    public String getWords() {
         return word;
     }
 

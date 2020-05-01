@@ -29,7 +29,7 @@ public class MyTests extends AppCompatActivity {
         testList.setLayoutManager(layoutManager);
 
         testList.setHasFixedSize(true);
-        TestAdapter adapter =  new TestAdapter(50);
+        TestAdapter adapter =  new TestAdapter(50,this, UserTests);
         testList.setAdapter(adapter);
     }
 }

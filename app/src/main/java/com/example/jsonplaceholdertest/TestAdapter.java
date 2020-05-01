@@ -10,13 +10,20 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
 public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestsViewHolder>{
     private static int viewHolderCount;
     private int numberOfItems;
+    Context adapterContext;
+    ArrayList<Test> UserTests;
 
-    public TestAdapter(int numberOfItems){
+    public TestAdapter(int numberOfItems, Context adapterContext,ArrayList<Test> UserTests){
         this.numberOfItems = numberOfItems;
         viewHolderCount = 0;
+        this.adapterContext = adapterContext;
+        this.UserTests = UserTests;
     }
     @NonNull
     @Override
@@ -57,7 +64,8 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestsViewHolde
             TestView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v){
-
+                    Intent i =  new Intent(adapterContext,TestActivity.class);
+                    adapterContext.startActivity(i);
                 }
             });
         }

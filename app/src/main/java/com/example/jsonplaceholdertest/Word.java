@@ -4,6 +4,15 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Word {
+    @SerializedName("word")
+    @Expose
+    private String word;
+    @SerializedName("results")
+    @Expose
+    private result[] results;
+
+
+
     class result{
         public result(String definition, String partOfSpeech, String[] synonyms, String[] similarTo, String[] derivation, String[] typeOf, String[] hasTypes, String[] hasMembers, String[] examples) {
             this.definition = definition;
@@ -43,6 +52,8 @@ public class Word {
         @SerializedName("examples")
         @Expose
         String[] examples;
+
+
         public String getDefinition() {
             return definition;
         }
@@ -115,24 +126,25 @@ public class Word {
             this.examples = examples;
         }
     }
-    @SerializedName("word")
-    @Expose
-    private String word;
-
-    @SerializedName("results")
-    @Expose
-    private result[] results;
-
     @SerializedName("syllables")
     @Expose
     private String syllables;
+    class syllables{
+        @SerializedName("count")
+        @Expose
+        int count;
+        @SerializedName("listz")
+        @Expose
+        String[] list;
 
+    }
     @SerializedName("pronunciation")
     @Expose
     private String pronunciation;
     @SerializedName("frequency")
     @Expose
     private float frequency;
+
 
     public String getWords() {
         return word;

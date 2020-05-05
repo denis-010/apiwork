@@ -9,12 +9,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestsViewHolder>{
     private static int viewHolderCount;
+    Fragment Test;
     private int numberOfItems;
     Context adapterContext;
     ArrayList<Test> UserTests;
@@ -64,13 +67,14 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestsViewHolde
             TestView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v){
-                    Intent i =  new Intent(adapterContext,TestActivity.class);
-                    adapterContext.startActivity(i);
+                    Intent i = new Intent(adapterContext, TestFragment.class);
+
+
                 }
             });
         }
         void bind(int listIndex){
-            TextViewHolder.setText(String.valueOf(listIndex));
+            TextViewHolder.setText(UserTests.get(listIndex).getInfo());
         }
     }
 }

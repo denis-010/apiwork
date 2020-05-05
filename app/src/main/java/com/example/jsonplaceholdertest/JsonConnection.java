@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 interface ApiConnection {
         @Headers({
                 "x-rapidapi-host: wordsapiv1.p.rapidapi.com",
-                "x-rapidapi-key: 838b737emsh0ebb0b1e5fbf1b4p19c0dejsnbbeeaa69ec46"
+
         })
         @GET("/words/")
         Call<Word> getWord(@Query("word") String word);

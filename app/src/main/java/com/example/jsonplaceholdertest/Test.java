@@ -6,17 +6,23 @@ public class Test {
     String[] rightAnswers;
     String type;
     String difficulty;
+    String name;
 
-    public Test(String[] rightAnswers, String type, String difficulty) {
+    public Test(String[] rightAnswers, String type, String difficulty, String name) {
         this.rightAnswers = rightAnswers;
         this.type = type;
         this.difficulty = difficulty;
+        this.name = name;
+
     }
     @Override
     public String toString() {
-        return "Test" + "rightAnswers=" + Arrays.toString(rightAnswers) +
+        return name+ " "+":"+" " + Arrays.toString(rightAnswers) +
                 ", type:'" + type +
                 ", difficulty:'" + difficulty;
+    }
+    public String getInfo(){
+        return name +"\t" +  type +"\t" + difficulty;
     }
 
     public String[] getRightAnswers() {

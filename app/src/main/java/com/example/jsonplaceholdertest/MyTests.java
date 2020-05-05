@@ -22,12 +22,11 @@ public class MyTests extends AppCompatActivity {
         ArrayList<Test> UserTests = new ArrayList<>();
         for (int i = 0 ; i < 50; i++){
             String RightAnswers[] = {"lol"};
-            Test test = new Test(RightAnswers,"i"+1,"i"+1);
+            Test test = new Test(RightAnswers,"i","i", "name"+i);
             UserTests.add(test);
         }
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         testList.setLayoutManager(layoutManager);
-
         testList.setHasFixedSize(true);
         TestAdapter adapter =  new TestAdapter(50,this, UserTests);
         testList.setAdapter(adapter);

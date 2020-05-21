@@ -1,4 +1,4 @@
-package com.example.jsonplaceholdertest;
+package com.example.jsonplaceholdertest.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,16 +19,14 @@ interface ApiConnection {
         Call<Word> getWord(@Query("word") String word);
 }
 
-public class JsonConnection {
+public class  JsonConnection {
     private final static String BASE_URL = "https://wordsapiv1.p.rapidapi.com";
 
     private static JsonConnection instance;
     Retrofit retrofit;
 
     private JsonConnection() {
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
+        Gson gson = new GsonBuilder().setLenient().create();
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nested_graph_test"
+    app:startDestination="@id/testFragment">
+
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.example.jsonplaceholdertest.test.TestFragment"
+        android:label="TestFragment" >
+        <action
+            android:id="@+id/action_testFragment_to_resultoftest"
+            app:destination="@id/resultoftest" />
+        <action
+            android:id="@+id/action_testFragment_to_testResultOverview"
+            app:destination="@id/testResultOverview2" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultoftest"
+        android:name="com.example.jsonplaceholdertest.test.resultoftest"
+        android:label="resultoftest" />
+    <fragment
+        android:id="@+id/testResultOverview2"
+        android:name="com.example.jsonplaceholdertest.test.TestResultOverview"
+        android:label="TestResultOverview" />
+</navigation>

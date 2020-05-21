@@ -1,9 +1,10 @@
-package com.example.jsonplaceholdertest;
+package com.example.jsonplaceholdertest.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Word {
+
     class result{
         public result(String definition, String partOfSpeech, String[] synonyms, String[] similarTo, String[] derivation, String[] typeOf, String[] hasTypes, String[] hasMembers, String[] examples) {
             this.definition = definition;

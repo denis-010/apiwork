@@ -1,4 +1,4 @@
-package com.example.jsonplaceholdertest;
+package com.example.jsonplaceholdertest.ui.dashboard;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.ActivityNavigator;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.jsonplaceholdertest.MainActivity;
+import com.example.jsonplaceholdertest.R;
+import com.example.jsonplaceholdertest.test.Test;
+import com.example.jsonplaceholdertest.test.TestFragment;
 
 import java.util.ArrayList;
 
@@ -24,7 +33,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestsViewHolde
         viewHolderCount = 0;
         this.adapterContext = adapterContext;
         this.UserTests = UserTests;
-    }
+    }//comment
     @NonNull
     @Override
     public TestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,7 +54,6 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestsViewHolde
     public void onBindViewHolder(@NonNull TestsViewHolder holder, int position) {
         holder.bind(position);
     }
-
     @Override
     public int getItemCount() {
         return numberOfItems;
@@ -56,21 +64,20 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestsViewHolde
         LinearLayout listItemView;
         TextView TextViewHolder;
 
-        public TestsViewHolder(View TestView){
+        public TestsViewHolder(final View TestView){
             super(TestView);
 
-            listItemView = TestView.findViewById(R.id .Test);
+            listItemView = TestView.findViewById(R.id.Test);
             TextViewHolder = TestView.findViewById(R.id.testInformation);
             TestView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v){
-                    Intent i =  new Intent(adapterContext,TestActivity.class);
-                    adapterContext.startActivity(i);
+                    Navigation.findNavController(v).navigate(R.id.action_navigation_dashboard_to_nested_graph_test);
                 }
             });
         }
         void bind(int listIndex){
-            TextViewHolder.setText(String.valueOf(listIndex));
+            TextViewHolder.setText(UserTests.get(listIndex).toString());
         }
     }
 }

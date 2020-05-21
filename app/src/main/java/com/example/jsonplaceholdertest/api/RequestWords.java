@@ -1,7 +1,6 @@
-package com.example.jsonplaceholdertest;
+package com.example.jsonplaceholdertest.api;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -9,12 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.jsonplaceholdertest.MainActivity;
+import com.example.jsonplaceholdertest.R;
+
 import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class RequestWords extends AppCompatActivity {
+public class RequestWords extends Activity {
     TextView textView;
     Button button;
     Button NextActivity;
@@ -24,24 +26,14 @@ public class RequestWords extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        NextActivity = findViewById(R.id.button2);
-        NextActivity.setOnClickListener(nextActivity);
-
         textView = findViewById(R.id.text_view);
-        button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AsyncTask task = new SendRequsetTask();
-                task.execute();
-            }
-        });
-    }
-    View.OnClickListener nextActivity = new View.OnClickListener() {
+        Button home= findViewById(R.id.button3);
+        home.setOnClickListener(homescreen);
+}
+    View.OnClickListener homescreen = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent i = new Intent( RequestWords.this, MyTests.class);
+            Intent i = new Intent(RequestWords.this, MainActivity.class);
             startActivity(i);
         }
     };
@@ -56,7 +48,6 @@ public class RequestWords extends AppCompatActivity {
                 Response<Word> response = call.execute();
                 word = response.body();
             } catch (IOException e) {
-                word = null;
             }
             return null;
         }

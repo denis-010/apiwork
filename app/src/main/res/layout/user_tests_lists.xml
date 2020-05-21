@@ -6,17 +6,21 @@
     <LinearLayout
         android:id = "@+id/Test"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="68dp"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:background="#5CA1DB"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/outline">
 
         <TextView
             android:id="@+id/testInformation"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="1dp"
             android:layout_gravity="center_horizontal|center_vertical"
-            android:textSize="25sp"/>
+
+            android:textSize="25sp"
+            android:textColor="@color/colorAccent"/>
+
     </LinearLayout>
 
 </FrameLayout>

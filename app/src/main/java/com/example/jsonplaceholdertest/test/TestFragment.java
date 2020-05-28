@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -40,6 +41,7 @@ public class TestFragment extends Fragment {
         question = root.findViewById(R.id.question);
         check = root.findViewById(R.id.Check);
         answer = root.findViewById(R.id.answer);
+
         sharedTestViewModel = ViewModelProviders.of(getActivity()).get(SharedTestViewModel.class);
         sharedTestViewModel.getTest().observe(getActivity(), new Observer<Test>() {
             @Override
@@ -57,24 +59,20 @@ public class TestFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Bundle bundle = new Bundle();
-            if(testUtility.Check()) {
-                if(testUtility.testHasEnded()){
-                    bundle.putIntegerArrayList("Results",testUtility.getResult());
-                    Navigation.findNavController(v).navigate(R.id.action_testFragment_to_testResultOverview);
+            if(testUtility.testHasEnded()) {
+                Navigation.findNavController(v).navigate(R.id.action_testFragment_to_testResultOverview);
+            }else {
+                if (testUtility.Check(answer.getText().toString())) {
+                    bundle.putStringArray("RESULT_OK", new String[]{"Correct!", "Your Answer is correct!"});
+                    resultoftest dialogFragment = new resultoftest();
+                    dialogFragment.show(getChildFragmentManager(),"resultoftest");
+                    dialogFragment.setArguments(bundle);
+                } else {
+                    bundle.putStringArray("RESULT_OK", new String[]{"Wrong", "Right answer is" + "\t" + testUtility.getRightAnswer()});
+                    Navigation.findNavController(v).navigate(R.id.action_testFragment_to_resultoftest, bundle);
                 }
-                else{
-                    bundle.putString("RESULT_OK", "Your Answer is correct!");
-                    testUtility.MoveToNextQuestion();
-                    Navigation.findNavController(v).navigate(R.id.action_testFragment_to_resultoftest,bundle);
 
-                }
-            }
-            else{
-                bundle.putString("RESULT_OK", "Right answer is"+"\t"+testUtility.getRightAnswer());
-                testUtility.MoveToNextQuestion();
-                Navigation.findNavController(v).navigate(R.id.action_testFragment_to_resultoftest, bundle);
             }
         }
     };
-
 }

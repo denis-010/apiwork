@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height= "match_parent"
-    android:layout_width="match_parent"
-    android:background="@color/white">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
-    android:layout_marginTop="200dp"
-    android:layout_marginStart="55dp"
     android:layout_height="200dp"
     android:background="@drawable/outline_for_button">
-
     <TextView
         android:id="@+id/correct_or_not"
         android:layout_width="243dp"
         android:layout_height="46dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:paddingStart="70dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="32dp"
+        android:paddingStart="65dp"
         android:paddingTop="5dp"
         android:paddingEnd="10dp"
         android:text="@string/correct"
@@ -30,25 +23,24 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.368"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.246" />
-
+        app:layout_constraintVertical_bias="0.0" />
     <TextView
         android:id="@+id/right_answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/your_answer_is_right"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/Continue_test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.503" />
-
+        app:layout_constraintTop_toBottomOf="@+id/correct_or_not"
+        app:layout_constraintVertical_bias="1.0" />
     <Button
         android:id="@+id/Continue_test"
         android:layout_width="132dp"
@@ -60,8 +52,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.884" />
-
-
+        app:layout_constraintVertical_bias="0.893" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-</RelativeLayout>

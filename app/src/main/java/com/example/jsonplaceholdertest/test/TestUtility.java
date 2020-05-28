@@ -11,19 +11,19 @@ public class TestUtility {
         questionNumber = 0;
         result = new ArrayList<>();
     }
-    public boolean Check(){
-        if(test.getQuestions().get(questionNumber).equals(test.getRightAnswers().get(questionNumber))){
+    public boolean Check(String answer){
+        if(answer.equals(test.getRightAnswers().get(questionNumber))){
             result.add(1);
+            questionNumber++;
             return true;
         }
         else{
             result.add(0);
+            questionNumber++;
             return false;
         }
     }
-    public void MoveToNextQuestion(){
-        questionNumber++;
-    }
+
     public String getQuestion(){
         return test.getQuestions().get(questionNumber);
     }

@@ -47,8 +47,8 @@ public class RequestWords extends Activity {
             Call<Word> call = api.getWord("dead");
             try {
                 Response<Word> response = call.execute();
-                word = response.body();
             } catch (IOException e) {
+                e.printStackTrace();
             }
             return null;
         }
@@ -56,7 +56,7 @@ public class RequestWords extends Activity {
         @Override
         protected void onPostExecute(Object o) {
             if (word == null) {
-                textView.setText("Null response");
+               textView.setText("Null response");
             } else if (word.getWord() == null) {
                 textView.setText("Empty title");
             } else {

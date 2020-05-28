@@ -3,12 +3,14 @@ package com.example.jsonplaceholdertest.api;
 import com.example.jsonplaceholdertest.ui.notifications.Word;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 interface ApiConnection {
@@ -16,8 +18,8 @@ interface ApiConnection {
                 "x-rapidapi-host: wordsapiv1.p.rapidapi.com",
                 "x-rapidapi-key: 838b737emsh0ebb0b1e5fbf1b4p19c0dejsnbbeeaa69ec46"
         })
-        @GET("/words/")
-        Call<Word> getWord(@Query("word") String word);
+        @GET("/words/{word}")
+        Call<Word> getWord(@Path("word") String word);
 }
 
 public class  JsonConnection {
@@ -27,7 +29,7 @@ public class  JsonConnection {
     Retrofit retrofit;
 
     private JsonConnection() {
-        Gson gson = new GsonBuilder().setLenient().create();
+        Gson gson = new GsonBuilder().create();
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))

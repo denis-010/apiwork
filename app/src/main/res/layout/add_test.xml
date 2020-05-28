@@ -4,45 +4,92 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <EditText
         android:id="@+id/YourQuestion"
-        android:layout_width="279dp"
-        android:layout_height="82dp"
+        android:layout_width="245dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:hint="Your question here."
         android:textColorHint="@color/colorAccent"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.365"
-        android:textSize="25sp"/>
+        app:layout_constraintVertical_bias="0.271" />
 
     <Button
-        android:id="@+id/NextQuestion"
-        android:layout_width="166dp"
-        android:layout_height="75dp"
+        android:id="@+id/next_question"
+        android:layout_width="129dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="150dp"
+
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/outline"
         android:text="Next"
-
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.817" />
+        app:layout_constraintTop_toBottomOf="@+id/add_right_answer"
+        app:layout_constraintVertical_bias="0.426" />
+
+    <Button
+        android:id="@+id/done"
+        android:layout_width="129dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/outline"
+        android:text="Done"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_right_answer"
+        app:layout_constraintVertical_bias="0.426" />
 
     <EditText
-        android:id="@+id/answer"
-        android:layout_width="279dp"
-        android:layout_height="82dp"
-        android:hint="Right answer"
+        android:id="@+id/add_right_answer"
+        android:layout_width="221dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:hint="Right_answer"
         android:textColorHint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/YourQuestion"
+        app:layout_constraintVertical_bias="0.227" />
+
+    <TextView
+        android:id="@+id/created_test_informaition"
+        android:layout_width="238dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="32dp"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="15dp"
+        android:text="@string/questions_in_total"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/YourQuestion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
+        app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

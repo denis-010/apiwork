@@ -31,11 +31,7 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/addTest"
-        android:name="com.example.jsonplaceholdertest.test.addTest"
+        android:name="com.example.jsonplaceholdertest.ui.dashboard.addTest"
         android:label="addTest" />
-    <fragment
-        android:id="@+id/wordFragment"
-        android:name="com.example.jsonplaceholdertest.WordFragment"
-        android:label="WordFragment" />
     <include app:graph="@navigation/nested_graph_test" />
 </navigation>

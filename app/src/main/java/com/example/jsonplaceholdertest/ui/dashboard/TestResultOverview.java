@@ -1,4 +1,4 @@
-package com.example.jsonplaceholdertest.test;
+package com.example.jsonplaceholdertest.ui.dashboard;
 
 import androidx.fragment.app.Fragment;
 

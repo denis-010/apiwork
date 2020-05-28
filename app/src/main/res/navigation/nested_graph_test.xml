@@ -12,14 +12,18 @@
             app:destination="@id/resultoftest" />
         <action
             android:id="@+id/action_testFragment_to_testResultOverview"
-            app:destination="@id/testResultOverview2" />
+            app:destination="@id/testResultOverview" />
     </fragment>
     <fragment
         android:id="@+id/resultoftest"
         android:name="com.example.jsonplaceholdertest.test.resultoftest"
-        android:label="resultoftest" />
+        android:label="resultoftest" >
+        <action
+            android:id="@+id/action_resultoftest_to_testFragment"
+            app:destination="@id/testFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/testResultOverview2"
-        android:name="com.example.jsonplaceholdertest.test.TestResultOverview"
+        android:id="@+id/testResultOverview"
+        android:name="com.example.jsonplaceholdertest.ui.dashboard.TestResultOverview"
         android:label="TestResultOverview" />
 </navigation>

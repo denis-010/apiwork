@@ -1,5 +1,6 @@
 package com.example.jsonplaceholdertest.api;
 
+import com.example.jsonplaceholdertest.ui.notifications.Word;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

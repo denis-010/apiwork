@@ -5,9 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jsonplaceholdertest.R;
 
@@ -59,7 +59,8 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordsViewHolde
             WordView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    WordFragment bottomSheet = new WordFragment();
+                    bottomSheet.show(((AppCompatActivity)adapterContext).getSupportFragmentManager(), "exampleBottomSheet");
                 }
             });
         }

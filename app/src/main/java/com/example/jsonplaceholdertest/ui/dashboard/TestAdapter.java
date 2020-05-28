@@ -1,7 +1,6 @@
 package com.example.jsonplaceholdertest.ui.dashboard;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,31 +8,34 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.ActivityNavigator;
-import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.jsonplaceholdertest.MainActivity;
 import com.example.jsonplaceholdertest.R;
 import com.example.jsonplaceholdertest.test.Test;
-import com.example.jsonplaceholdertest.test.TestFragment;
+import com.example.jsonplaceholdertest.test.SharedTestViewModel;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestsViewHolder>{
+public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestsViewHolder> {
+    SharedTestViewModel sharedTestViewModel;
     private static int viewHolderCount;
     private int numberOfItems;
     Context adapterContext;
-    ArrayList<Test> UserTests;
+    List<Test> UserTests;
 
-    public TestAdapter(int numberOfItems, Context adapterContext,ArrayList<Test> UserTests){
-        this.numberOfItems = numberOfItems;
+    public TestAdapter(Context adapterContext, List<Test> UserTests) {
         viewHolderCount = 0;
         this.adapterContext = adapterContext;
         this.UserTests = UserTests;
-    }//comment
+
+    }
+    public void setUserTests(List<Test> newTests){
+        UserTests = newTests;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public TestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,39 +47,40 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestsViewHolde
         View view;
         view = inflater.inflate(layoutIdForListItem, parent, false);
         TestsViewHolder viewHolder = new TestsViewHolder(view);
-        viewHolder.TextViewHolder.setText("");
         viewHolderCount++;
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull TestsViewHolder holder, int position) {
-        holder.bind(position);
-    }
-    @Override
-    public int getItemCount() {
-        return numberOfItems;
+        Test currentTest = UserTests.get(position);
+        holder.TextViewHolder.setText(currentTest.toString());
+
     }
 
-    class TestsViewHolder extends RecyclerView.ViewHolder{
+    @Override
+    public int getItemCount() {
+        return UserTests.size();
+    }
+
+    class TestsViewHolder extends RecyclerView.ViewHolder {
 
         LinearLayout listItemView;
         TextView TextViewHolder;
 
-        public TestsViewHolder(final View TestView){
+        public TestsViewHolder(final View TestView) {
             super(TestView);
 
             listItemView = TestView.findViewById(R.id.Test);
             TextViewHolder = TestView.findViewById(R.id.testInformation);
             TestView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v){
+                public void onClick(View v) {
+                    sharedTestViewModel = ViewModelProviders.of((FragmentActivity) adapterContext).get(SharedTestViewModel.class);
+                    sharedTestViewModel.setPickedTest(UserTests.get(viewHolderCount-1));
                     Navigation.findNavController(v).navigate(R.id.action_navigation_dashboard_to_nested_graph_test);
                 }
             });
-        }
-        void bind(int listIndex){
-            TextViewHolder.setText(UserTests.get(listIndex).toString());
         }
     }
 }

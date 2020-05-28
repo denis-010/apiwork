@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.jsonplaceholdertest.MainActivity;
 import com.example.jsonplaceholdertest.R;
+import com.example.jsonplaceholdertest.ui.notifications.Word;
 
 import java.io.IOException;
 
@@ -56,10 +57,10 @@ public class RequestWords extends Activity {
         protected void onPostExecute(Object o) {
             if (word == null) {
                 textView.setText("Null response");
-            } else if (word.getWords() == null) {
+            } else if (word.getWord() == null) {
                 textView.setText("Empty title");
             } else {
-                textView.setText(word.getWords());
+                textView.setText(word.getWord());
             }
         }
 

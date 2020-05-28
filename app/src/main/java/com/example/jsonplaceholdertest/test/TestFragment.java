@@ -11,73 +11,68 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.ActivityNavigator;
-import androidx.navigation.NavDestination;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
+
 
 import com.example.jsonplaceholdertest.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TestFragment extends Fragment {
+    private TextView question;
+    private Button check;
+    private EditText answer;
+    private Test testPickedByUser;
 
-    TextView question;
-    Button check;
-    EditText answer;
-    ArrayList<String> rightAnswers;
-    ArrayList<String> questions;
-    public int questionNumber;
-    Test testPickedByUser;
-    ArrayList<String> RightAnswers;
+    TestUtility testUtility;
+    private SharedTestViewModel sharedTestViewModel;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.new_words,container,false);
-        questionNumber = 0;
-
 
         question = root.findViewById(R.id.question);
         check = root.findViewById(R.id.Check);
         answer = root.findViewById(R.id.answer);
-
-        RightAnswers = new ArrayList<>();
-        RightAnswers.add("lol");
-        RightAnswers.add("what is lol");
-        questions = new ArrayList<>();
-        questions.add("lol");
-        questions.add("What is lol");
-
-
-        testPickedByUser= new Test("lol",questions,RightAnswers,"translation","easy");
-
-        setQuestion(questions.get(questionNumber));
+        sharedTestViewModel = ViewModelProviders.of(getActivity()).get(SharedTestViewModel.class);
+        sharedTestViewModel.getTest().observe(getActivity(), new Observer<Test>() {
+            @Override
+            public void onChanged(@Nullable Test tests) {
+                testPickedByUser = tests;
+            }
+        });
+        testUtility = new TestUtility(testPickedByUser);
+        question.setText(testUtility.getQuestion());
         check.setOnClickListener(nextquestion);
         return root;
     }
-    public void setQuestion(String questions) {
-        question.setText(questions);
-    }
-    public boolean Check(String rightAnswer){
-        if(answer.getText().toString().equals(rightAnswer))
-        {return true;}
-        else{return false;}
-    }
-    View.OnClickListener nextquestion = new View.OnClickListener() {
+
+    private View.OnClickListener nextquestion = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(Check(testPickedByUser.getRightAnswers().get(questionNumber))) {
-                if(questionNumber == questions.size()){
+            Bundle bundle = new Bundle();
+            if(testUtility.Check()) {
+                if(testUtility.testHasEnded()){
+                    bundle.putIntegerArrayList("Results",testUtility.getResult());
+                    Navigation.findNavController(v).navigate(R.id.action_testFragment_to_testResultOverview);
                 }
                 else{
-                    questionNumber++;
-                    setQuestion(questions.get(questionNumber));
-                    Navigation.findNavController(v).navigate(R.id.action_testFragment_to_resultoftest);
+                    bundle.putString("RESULT_OK", "Your Answer is correct!");
+                    testUtility.MoveToNextQuestion();
+                    Navigation.findNavController(v).navigate(R.id.action_testFragment_to_resultoftest,bundle);
+
                 }
             }
             else{
+                bundle.putString("RESULT_OK", "Right answer is"+"\t"+testUtility.getRightAnswer());
+                testUtility.MoveToNextQuestion();
+                Navigation.findNavController(v).navigate(R.id.action_testFragment_to_resultoftest, bundle);
             }
         }
     };

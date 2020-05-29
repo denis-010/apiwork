@@ -11,6 +11,18 @@ import java.util.ArrayList;
 
 @Entity(tableName = "words")
     public class Word {
+    public Word(String word, String syllables, String definition, String partOfSpeech, ArrayList<String> synonyms, ArrayList<String> examples, String pronunciation, float frequency, int ID) {
+        this.word = word;
+        this.syllables = syllables;
+        this.definition = definition;
+        this.partOfSpeech = partOfSpeech;
+        this.synonyms = synonyms;
+        this.examples = examples;
+        this.pronunciation = pronunciation;
+        this.frequency = frequency;
+        this.ID = ID;
+    }
+
     @ColumnInfo(name = "COLUMN_WORD")
     @SerializedName("word")
     @Expose
@@ -40,17 +52,6 @@ import java.util.ArrayList;
     private
     ArrayList<String> examples;
 
-    public Word(String word, String syllables, String definition, String partOfSpeech, ArrayList<String> synonyms, ArrayList<String> examples, String pronunciation, float frequency, int ID) {
-        this.word = word;
-        this.syllables = syllables;
-        this.definition = definition;
-        this.partOfSpeech = partOfSpeech;
-        this.synonyms = synonyms;
-        this.examples = examples;
-        this.pronunciation = pronunciation;
-        this.frequency = frequency;
-        this.ID = ID;
-    }
 
     public String getDefinition() {
         return definition;

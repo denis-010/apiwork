@@ -29,4 +29,10 @@ public interface TestDao {
     void insert(Word word);
     @Update
     void update(Word word);
+    @Delete
+    void delete(Word word);
+    @Query("DELETE FROM `words`")
+    void deleteAllWords();
+    @Query("SELECT * FROM `words`")
+    LiveData<List<Word>> getAllWords();
 }

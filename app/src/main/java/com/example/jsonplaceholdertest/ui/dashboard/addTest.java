@@ -9,17 +9,12 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 
 import com.example.jsonplaceholdertest.R;
-import com.example.jsonplaceholdertest.test.NameYourTest;
 import com.example.jsonplaceholdertest.test.SharedTestViewModel;
-import com.example.jsonplaceholdertest.test.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class addTest extends  Fragment {

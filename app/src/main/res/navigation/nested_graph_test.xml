@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/testFragment"
-        android:name="com.example.jsonplaceholdertest.test.TestFragment"
+        android:name="com.example.jsonplaceholdertest.test.TestUtility$TestFragment"
         android:label="TestFragment" >
         <action
             android:id="@+id/action_testFragment_to_resultoftest"

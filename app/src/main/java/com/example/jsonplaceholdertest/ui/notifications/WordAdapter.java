@@ -13,7 +13,7 @@ import com.example.jsonplaceholdertest.R;
 
 import java.util.ArrayList;
 
-public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordsViewHolder> {
+public class    WordAdapter extends RecyclerView.Adapter<WordAdapter.WordsViewHolder> {
     private static int viewHolderCount;
     private int numberOfItems;
     Context adapterContext;

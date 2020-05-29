@@ -1,6 +1,7 @@
 package com.example.jsonplaceholdertest.api;
 
 import com.example.jsonplaceholdertest.ui.notifications.Word;
+import com.example.jsonplaceholdertest.ui.notifications.WordsApi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -18,8 +19,8 @@ interface ApiConnection {
                 "x-rapidapi-host: wordsapiv1.p.rapidapi.com",
                 "x-rapidapi-key: 838b737emsh0ebb0b1e5fbf1b4p19c0dejsnbbeeaa69ec46"
         })
-        @GET("/words/{word}")
-        Call<Word> getWord(@Path("word") String word);
+        @GET("words/{word}")
+        Call<WordsApi> getWord(@Path("word") String word);
 }
 
 public class  JsonConnection {

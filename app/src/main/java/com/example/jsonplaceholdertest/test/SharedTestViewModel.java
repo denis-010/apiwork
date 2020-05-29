@@ -49,25 +49,6 @@ public class SharedTestViewModel extends AndroidViewModel {
         repository.deleteAllTest();
     }
     public void init(){
-        ArrayList<String> rightAnswers = new ArrayList<>();
-        rightAnswers.add("1");
-        rightAnswers.add("1");
-        rightAnswers.add("1");
-        rightAnswers.add("1");
-        ArrayList<String> questions = new ArrayList<>();
-        questions.add("1");
-        questions.add("1");
-        questions.add("1");
-        questions.add("1");
-        testForTesting = new Test("test2",questions,rightAnswers,"easy","translation");
-        insert(testForTesting);
     }
-    public void populateList(){
-        ArrayList<String> rightAnswers = new ArrayList<>();
-        rightAnswers.add("1");
-        ArrayList<String> questions = new ArrayList<>();
-        questions.add("1");
-        testForTesting = new Test("test",questions,rightAnswers,"easy","translation");
-        testArrayList.add(testForTesting);
-    }
+
 }

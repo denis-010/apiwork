@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:background="@color/white">
+    android:background="@drawable/outline">
 
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/user_answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your answer:lol"
@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.511" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/right_answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Right answer: lol"

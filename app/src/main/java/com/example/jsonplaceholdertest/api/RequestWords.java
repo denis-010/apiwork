@@ -4,18 +4,24 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.jsonplaceholdertest.MainActivity;
 import com.example.jsonplaceholdertest.R;
+import com.example.jsonplaceholdertest.test.SharedTestViewModel;
 import com.example.jsonplaceholdertest.ui.notifications.Word;
+import com.example.jsonplaceholdertest.ui.notifications.WordsApi;
 
 import java.io.IOException;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class RequestWords extends Activity {
     TextView textView;
@@ -30,6 +36,8 @@ public class RequestWords extends Activity {
         textView = findViewById(R.id.text_view);
         Button home= findViewById(R.id.button3);
         home.setOnClickListener(homescreen);
+        button = findViewById(R.id.button);
+        button.setOnClickListener(resquet);
 }
     View.OnClickListener homescreen = new View.OnClickListener() {
         @Override
@@ -38,15 +46,24 @@ public class RequestWords extends Activity {
             startActivity(i);
         }
     };
+    View.OnClickListener resquet = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SendRequsetTask task = new SendRequsetTask();
+            task.execute();
+        }
+    };
 
-    private class SendRequsetTask extends AsyncTask{
-        private Word word;
+    private class SendRequsetTask extends AsyncTask {
+        private WordsApi word;
+
         @Override
         protected Object doInBackground(Object[] objects) {
             ApiConnection api = JsonConnection.getInstance().getAPI();
-            Call<Word> call = api.getWord("dead");
+            Call<WordsApi> call = api.getWord("cool");
             try {
-                Response<Word> response = call.execute();
+                Response<WordsApi> response = call.execute();
+                word = response.body();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -56,13 +73,12 @@ public class RequestWords extends Activity {
         @Override
         protected void onPostExecute(Object o) {
             if (word == null) {
-               textView.setText("Null response");
+                textView.setText("Null response");
             } else if (word.getWord() == null) {
                 textView.setText("Empty title");
             } else {
-                textView.setText(word.getWord());
+                textView.setText((CharSequence) word.getPronunciation());
             }
         }
-
     }
 }
